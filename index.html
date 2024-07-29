@@ -7,14 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div id="message-container">
-        <p id="inspiration-message"></p>
+    <div id="cloud-container">
+        <div class="cloud" id="cloud-1"></div>
+        <div class="cloud" id="cloud-2"></div>
+        <div class="cloud" id="cloud-3"></div>
     </div>
-    <button id="random-quote-button">Show Random Quote</button>
-    <p id="timer"></p>
+    <div id="main-content">
+        <div id="message-container">
+            <p id="inspiration-message"></p>
+        </div>
+        <button id="random-quote-button">Show Random Quote</button>
+        <p id="timer"></p>
+    </div>
+    <button id="comment-toggle-button" class="cloud-button comment-button">💬</button>
+    <button id="theme-toggle-button" class="cloud-button theme-button">☀️</button>
+    <div id="comments-section" class="hidden">
+        <textarea id="new-comment" placeholder="Write your comment..."></textarea>
+        <button id="submit-comment">Submit</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
