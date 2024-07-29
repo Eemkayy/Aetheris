@@ -12,13 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
         "In loneliness, the lonely one eats himself; in a crowd, the many eat him. Now choose.",
         "If you have been brutally broken, but still have the courage to be gentle to other living beings, then you're a badass with the heart of an angel. - Keanu Reeves",
         "Defeat is a state of mind, and no one is ever defeated until defeat has been accepted as a reality.",
-        "Cast all your anxiety on him because he cares for you - 1 Peter 5:7"
-
-
+        "Cast all your anxiety on him because he cares for you - 1 Peter 5:7",
+        "You did the best you could with what you knew at the time. \n Don't let new wisdom lead you to condemn yourself over old struggles. \n Forgive yourself and move forward. - Morgan Richard Olivier",
+        "For though I fall I will rise again. Though I sit in darkness, the Lord will be my light - Micah 7:8",
+        "Who sees the human face correctly: the photographer, the mirror, or the painter?",
+        "You don't have to be the best person, you just have to be someone that is trying to do better.",
+        "Your visions will become clear only when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes - Carl Jung",
+        "Never trade a heart that loves you for eyes that desire you.",
+        "If I am worth anything later, I am worth something now. For wheat is wheat, even if people think it is grass in the beginning - Van Gogh",
+        "Life is way too short to spend it battling with yourself. \n Your existence is not a mistake, it's a gift. \nSo enjoy every moment of it.",
+        "You're a language I'm no longer fluent in but still remember how to read",
+        "To love is to recognize the space between souls and gracefully adapt to the here and now",
+        "Well done is better than well said - Benjamin Franklin"
+        
     ];
 
     const messageContainer = document.getElementById('inspiration-message');
     const timerContainer = document.getElementById('timer');
+    const randomQuoteButton = document.getElementById('random-quote-button');
+
+    let isGenerating = false;
+    const typingSpeed = 50; 
 
     function getDailyMessage() {
         const now = new Date();
@@ -26,6 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const msSinceStartOfDay = now - startOfDay;
         const dayIndex = Math.floor(msSinceStartOfDay / (24 * 60 * 60 * 1000)) % messages.length;
         return messages[dayIndex];
+    }
+
+    function getRandomMessage() {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
     }
 
     function updateTimer() {
@@ -40,15 +59,38 @@ document.addEventListener("DOMContentLoaded", function () {
         timerContainer.textContent = `New quote in: ${hours}h ${minutes}m ${seconds}s`;
     }
 
+    function displayMessage(message) {
+        let i = 0;
+        messageContainer.textContent = '';
+        function typeWriter() {
+            if (i < message.length) {
+                messageContainer.innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, typingSpeed); 
+            } else {
+                isGenerating = false; 
+                randomQuoteButton.textContent = "Show Random Quote"; 
+                randomQuoteButton.disabled = false; 
+            }
+        }
+        typeWriter();
+    }
+
+    randomQuoteButton.addEventListener('click', function () {
+        if (!isGenerating) {
+            isGenerating = true;
+            randomQuoteButton.textContent = "Generating...";
+            randomQuoteButton.disabled = true; 
+            const randomMessage = getRandomMessage();
+            displayMessage(randomMessage);
+        }
+    });
+
     const dailyMessage = getDailyMessage();
-    messageContainer.textContent = dailyMessage;
-
-    const typingSpeed = 100; // milliseconds per character
-    const animationDuration = (dailyMessage.length * typingSpeed) / 1000; // in seconds
-
-    messageContainer.style.width = 'auto';
-    messageContainer.style.animation = `typing ${animationDuration}s steps(${dailyMessage.length}, end) forwards, blink-caret 0.75s step-end infinite`;
-
+    isGenerating = true;
+    randomQuoteButton.textContent = "Generating...";
+    randomQuoteButton.disabled = true; 
+    displayMessage(dailyMessage);
     updateTimer();
     setInterval(updateTimer, 1000);
 });

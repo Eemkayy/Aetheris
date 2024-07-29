@@ -16,10 +16,10 @@ body {
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 90%; /* Adjusted max-width to fit larger messages */
+    max-width: 90%;
     width: auto;
     position: relative;
-    white-space: pre-wrap; /* Allows text to wrap */
+    white-space: pre-wrap; 
 }
 
 #inspiration-message {
@@ -27,12 +27,30 @@ body {
     color: #333;
     font-style: italic;
     font-family: 'Great Vibes', cursive; 
-    white-space: nowrap; 
-    overflow: hidden; 
     border-right: 0.15em solid orange; 
-    width: 0;
-    display: inline-block; /* Added to help with animation */
+    display: inline-block; 
     animation: blink-caret 0.75s step-end infinite;
+    white-space: pre-wrap; 
+    overflow: visible; 
+}
+
+
+#random-quote-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-style: italic;
+    font-family: 'Great Vibes', cursive; 
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#random-quote-button:hover {
+    background-color: #d9dce0;
 }
 
 @keyframes typing {
@@ -42,7 +60,7 @@ body {
 
 @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: orange; }
+    50% { border-color: rgb(38, 194, 186); }
 }
 
 #timer {
