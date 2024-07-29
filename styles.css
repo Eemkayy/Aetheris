@@ -8,6 +8,7 @@ body {
     background-color: var(--background-color, #87CEEB);
     overflow: hidden;
     transition: background-color 0.5s ease;
+    flex-direction: column;
 }
 
 #cloud-container {
@@ -31,8 +32,8 @@ body {
     color: var(--cloud-text-color, #000);
     word-wrap: break-word; 
     word-break: break-all; 
-    min-width: 200px; 
-    min-height: 100px; 
+    min-width: 150px; 
+    min-height: 80px; 
     max-width: 300px; 
 }
 
@@ -67,6 +68,8 @@ body {
     text-align: center;
     z-index: 1;
     position: relative;
+    max-width: 90%;
+    padding: 20px;
 }
 
 #message-container {
@@ -75,8 +78,7 @@ body {
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 90%;
-    width: auto;
+    width: 100%;
     margin-bottom: 20px;
     white-space: pre-wrap;
     transition: background-color 0.5s ease;
@@ -129,8 +131,8 @@ body {
 .cloud-button {
     position: absolute;
     top: 20px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: var(--cloud-button-bg-color, #fff);
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -145,7 +147,7 @@ body {
 }
 
 .comment-button {
-    right: 100px; 
+    right: 80px; 
 }
 
 .theme-button {
@@ -161,8 +163,7 @@ body {
 }
 
 #comments-section {
-    margin-top: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
     text-align: left;
     background: var(--container-bg-color, #fff);
@@ -170,7 +171,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 100px; 
+    top: 80px; 
     right: 20px;
 }
 
@@ -191,7 +192,7 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     color: var(--button-text-color, #fff);
-    background-color: var(--submit-bg-color, #007BFF);
+    background-color: var(--submit-bg-color, #87ceeb);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -199,7 +200,7 @@ body {
 }
 
 #submit-comment:hover {
-    background-color: var(--submit-hover-bg-color, #0056b3);
+    background-color: var(--submit-hover-bg-color, #60a4be);
 }
 
 #comments {
@@ -229,8 +230,8 @@ body {
     --caret-color: orange;
     --cloud-button-bg-color: #fff;
     --cloud-button-hover-bg-color: #d9dce0;
-    --submit-bg-color: #007BFF;
-    --submit-hover-bg-color: #0056b3;
+    --submit-bg-color: #87CEEB;
+    --submit-hover-bg-color: #60a4be;
 }
 
 /* Nighttime Theme */
@@ -240,12 +241,78 @@ body.night-mode {
     --text-color: #ecf0f1;
     --button-bg-color: #34495e;
     --button-text-color: #ecf0f1;
-    --button-hover-bg-color: #18212b;
+    --button-hover-bg-color: #2c3e50;
     --cloud-color: #7f8c8d;
     --cloud-text-color: #ecf0f1;
     --caret-color: #ecf0f1;
     --cloud-button-bg-color: #34495e;
     --cloud-button-hover-bg-color: #2c3e50;
-    --submit-bg-color: #2c3e50;
-    --submit-hover-bg-color: #18212b;
+    --submit-bg-color: #243342;
+    --submit-hover-bg-color: #121a22;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .cloud {
+        min-width: 100px;
+        min-height: 60px;
+        max-width: 200px;
+        font-size: 0.8em;
+    }
+
+    .cloud-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    #comments-section {
+        top: 60px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cloud {
+        min-width: 80px;
+        min-height: 50px;
+        max-width: 150px;
+        font-size: 0.7em;
+    }
+
+    .cloud-button {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+
+    #main-content {
+        padding: 10px;
+    }
+
+    #message-container {
+        padding: 10px;
+    }
+
+    #random-quote-button {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+    #timer {
+        font-size: 0.8em;
+    }
+
+    #comments-section {
+        top: 50px;
+        right: 5px;
+        width: 90%;
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    #submit-comment {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
 }

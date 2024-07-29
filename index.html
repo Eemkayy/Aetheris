@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aetheris</title>
+    <title>Inspiration Quotes</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,15 +14,18 @@
     </div>
     <div id="main-content">
         <div id="message-container">
-            <p id="inspiration-message"></p>
+            <div id="inspiration-message"></div>
         </div>
         <button id="random-quote-button">Show Random Quote</button>
-        <p id="timer"></p>
+        <div id="timer"></div>
     </div>
-    <button id="comment-toggle-button" class="cloud-button comment-button">💬</button>
-    <button id="theme-toggle-button" class="cloud-button theme-button">☀️</button>
+    <button class="cloud-button comment-button" id="comment-toggle-button">💬</button>
+    <button class="cloud-button theme-button" id="theme-toggle-button">☀️</button>
     <div id="comments-section" class="hidden">
-        <textarea id="new-comment" placeholder="Write your comment..."></textarea>
+        <div>
+            <label for="new-comment">Comments</label>
+            <textarea id="new-comment" placeholder="Write your comment..."></textarea>
+        </div>
         <button id="submit-comment">Submit</button>
     </div>
     <script src="script.js"></script>
