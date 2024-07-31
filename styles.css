@@ -1,5 +1,9 @@
+html, body {
+    min-height: 600px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
+}
+
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +13,9 @@ body {
     overflow: hidden;
     transition: background-color 0.5s ease;
     flex-direction: column;
+    text-align: center;
+    padding: 0 10px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #cloud-container {
@@ -30,11 +37,17 @@ body {
     align-items: center;
     text-align: center;
     color: var(--cloud-text-color, #000);
-    word-wrap: break-word; 
-    word-break: break-all; 
-    min-width: 150px; 
-    min-height: 80px; 
-    max-width: 300px; 
+    word-wrap: break-word;
+    word-break: break-word;
+    width: 200px;
+    height: 100px;
+    min-width: 200px; 
+    min-height: 100px; 
+    max-width: 300px;
+    max-height: 150px;
+    transition: all 0.3s ease;
+    overflow: hidden; 
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 .cloud:nth-child(1) {
@@ -65,11 +78,17 @@ body {
 }
 
 #main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column; 
     text-align: center;
     z-index: 1;
     position: relative;
     max-width: 90%;
     padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 #message-container {
@@ -79,20 +98,24 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 0 auto 20px auto; 
     white-space: pre-wrap;
     transition: background-color 0.5s ease;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #inspiration-message {
     font-size: 1.5em;
     color: var(--text-color, #333);
     font-style: italic;
-    font-family: 'Great Vibes', cursive;
     display: inline-block;
     white-space: pre-wrap;
     overflow: visible;
     position: relative;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 .caret {
@@ -109,13 +132,13 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     font-style: italic;
-    font-family: 'Great Vibes', cursive;
     color: var(--button-text-color, #000);
     background-color: var(--button-bg-color, #fff);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #random-quote-button:hover {
@@ -126,11 +149,12 @@ body {
     margin-top: 20px;
     font-size: 1em;
     color: var(--text-color, #666);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 .cloud-button {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    bottom: 20px;
     width: 50px;
     height: 50px;
     background: var(--cloud-button-bg-color, #fff);
@@ -170,22 +194,29 @@ body {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 80px; 
-    right: 20px;
+    position: relative; 
+    margin-top: 20px; 
+    display: none; 
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
+}
+
+#comments-section.active {
+    display: block; 
 }
 
 #username {
     width: 100%;
     height: 30px;
     margin-bottom: 10px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #new-comment {
     width: 100%;
     height: 50px;
     margin-bottom: 10px;
-    resize: none; 
+    resize: none;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #submit-comment {
@@ -197,6 +228,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 #submit-comment:hover {
@@ -211,10 +243,12 @@ body {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 .comment {
     margin-bottom: 10px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
 }
 
 /* Daytime Theme */
@@ -274,10 +308,12 @@ body.night-mode {
 
 @media (max-width: 480px) {
     .cloud {
-        min-width: 80px;
-        min-height: 50px;
+        min-width: 150px;
+        min-height: 75px;
         max-width: 150px;
-        font-size: 0.7em;
+        max-height: 75px;
+        font-size: 0.8em;
+        overflow: hidden; 
     }
 
     .cloud-button {
@@ -291,7 +327,8 @@ body.night-mode {
     }
 
     #message-container {
-        padding: 10px;
+        padding: 10px; 
+        min-width: 250px; 
     }
 
     #random-quote-button {
@@ -304,11 +341,12 @@ body.night-mode {
     }
 
     #comments-section {
-        top: 50px;
-        right: 5px;
+        top: auto; 
+        right: auto; 
         width: 90%;
         max-width: 300px;
         padding: 10px;
+        margin-top: 20px; 
     }
 
     #submit-comment {

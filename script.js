@@ -72,6 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let isGenerating = false;
     const typingSpeed = 50;
 
+    commentToggleButton.addEventListener('click', function () {
+        commentsSection.classList.toggle('active');
+    });
+
     function getDailyMessage() {
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 0);
@@ -104,8 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 i++;
                 setTimeout(typeWriter, typingSpeed);
             } else {
-                messageContainer.innerHTML = message + '<span class="caret">|</span>'; // Add the caret at the end
-                document.querySelector('.caret').style.animation = 'blink-caret 0.75s step-end infinite'; // Enable blinking animation
+                messageContainer.innerHTML = message + '<span class="caret">|</span>'; 
+                document.querySelector('.caret').style.animation = 'blink-caret 0.75s step-end infinite'; 
                 isGenerating = false;
                 randomQuoteButton.textContent = "Show Random Quote";
                 randomQuoteButton.disabled = false;
@@ -126,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const commentDiv = document.createElement('div');
         commentDiv.className = 'comment';
         commentDiv.textContent = comment;
-
-        // Select a cloud to display the comment
         if (cloud1.childElementCount === 0) {
             cloud1.appendChild(commentDiv);
         } else if (cloud2.childElementCount === 0) {
